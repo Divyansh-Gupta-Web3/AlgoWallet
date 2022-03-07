@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+      
+        <div class="user-box">
+            <label>&nbsp; username</label>
+          <input type="text" class="form-control" name="username" required="">
+            <label>&nbsp; password</label>
+          <input type="text" class="form-control" name="password" required="">
+            <label>&nbsp; passfrase</label>
+          <input type="text" class="form-control" name="passfrase" required="">
+            <label>&nbsp; Address </label>
+          <input type="text" class="form-control" name="address" required="">
+            <label>&nbsp; privatekey</label>
+          <input type="text" class="form-control" name="privatekey" required="">
+       </div>
+       <a style="position: relative; left: 2cm;" id="submitBtn" href="">
+
+        <input value="Submit" type="Submit" >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        
+      </input>
+    </form>     
+</body>
+</html>

@@ -1,4 +1,7 @@
 
+:root{
+  --primary-color:
+}
 html {
     scroll-behavior: smooth;
   }
@@ -23,7 +26,7 @@ html {
     white-space: nowrap;
     background: #20a764b8;
     height: 100vh;
-    width: 4cm;
+    width: 12rem;
   }
   nav ul {
     list-style: none;
@@ -39,7 +42,7 @@ html {
   }
   nav ul li a {
     display: block;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     color: white;
     text-decoration: none;
 
@@ -95,13 +98,9 @@ border: 1px solid rgba(130, 238, 130, 0.835);
 top: 2cm;
 /* opacity: 0.5; */
 background-color: rgb(255, 255, 254);
-box-shadow:  10px 4px 10px 4px #38B34B;
+box-shadow:  10px 4px 10px 4px #5EBF8E;
 
 }
-#container:hover{
-cursor: pointer;
-
-  }
  .addAcc{
     /* background: red; */
     display: grid;
@@ -187,7 +186,7 @@ cursor: pointer;
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #38b34ab9;
+    background: #5EBF8E;
     left: 0;
     top: 0;
     border-radius: 20px;
@@ -285,7 +284,7 @@ ol li input{
   margin-bottom: 0.5cm;
 }
 
-.button a{
+.button {
   position: relative;
   left: 14.5cm;
   top: 4cm;

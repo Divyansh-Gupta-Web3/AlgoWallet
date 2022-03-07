@@ -91,13 +91,14 @@ position: absolute;
 left: 5.5cm;
 right: 53cm;
 border-radius: 20px;
+border: 1px solid rgba(130, 238, 130, 0.835);
 top: 2cm;
 /* opacity: 0.5; */
 background-color: rgb(255, 255, 254);
+box-shadow:  10px 4px 10px 4px #38B34B;
 
 }
 #container:hover{
-box-shadow: 0px 0px 10px 10px #fafafa,0px 0px 30px 30px #6ee63ec1;
 cursor: pointer;
 
   }

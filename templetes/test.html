@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,4 +33,68 @@
       </input>
     </form>     
 </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatdevice-widthible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      :root{
+        --primary:white;
+      }
+      td,tr{
+        border: 2px solid black;
+        background: rgb(255, 97, 97);
+        padding: 0px;
+      }
+      table{
+        font-size: 1vw;
+
+      }
+      td{
+        background: rgb(18, 175, 218);
+        color: var(--primary);
+      }
+    </style>
+</head>
+
+<body>
+
+  <!-- {% for i in divyansh %}
+   {{i}}
+  <br>
+  {% endfor %} -->
+
+  <table>
+    <tr>
+      <th>Sno.</th>
+      <th>ID</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Fee</th>
+    </tr>
+
+    {% for i in divyansh %}
+
+    <tr>
+      <td>{{i.sno}}</td>
+      <td>{{i.id}}</td>
+      <td>{{i.tnxtype}}</td>
+      <td>{{i.amount}}</td>
+      <td>{{i.receiver}}</td>
+      <td>{{i.sender}}</td>
+      <td>{{i.fee}}</td>
+    </tr> 
+    {% endfor %}
+    </table>
+
+
+</body>
+
 </html>

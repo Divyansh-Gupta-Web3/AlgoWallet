@@ -13,6 +13,13 @@ html {
     /* this breaks position sticky in Firefox */
     /* overflow-x: hidden; */
   background-color: white;
+
+    display: grid;  
+    grid-gap: 5px;  
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: repeat(2, 100px);  
+
+
   }
   
   header {
@@ -293,3 +300,5 @@ ol li input{
   /* line-height: ; */
   margin-bottom: 0.5cm;
 }
+
+

@@ -13,17 +13,17 @@
 </head>
 <body>
     
-<div  style="" id="container">
+<div style="width: 70vw; max-width: 80vw;"  id="container">
 
    <div class="nav">
 
    </div>
-   <nav>
+   <nav style="font-size: 1.5vw;">
        <ul>
             
             
-        <br><br><br><br><br><br>
-            <li><a style="font-size: 1.8rem;" href="./dashboard.html">Profile</a></li>    <br>
+        <br><br><br>
+            <li><a style="font-size: 2vw;" href="./dashboard.html">Profile</a></li>    <br>
             <li><a href="send.html">Send Algo</a></li>    <br>
             <li><a href="recieve.html">Recieve Algo</a></li>    <br>
             <li><a href="history.html">Txns History</a></li>    <br>
@@ -34,16 +34,15 @@
 
   
     <!-- <img id="bgimg" src="/static/img/logo.png" alt=""> -->
-    <div style="width: 50vw; left: 10cm; top: -1.5cm;" class="stage">
-        <h1 style="position:relative; left: -5cm; font-size: 2rem;">Hello, DIVYANSH</h1>
-     
-        <footer style="position: fixed; top: 13cm; left: 14cm;">
-         <i>
-                Copyright &copy; All Rights Reserved by AlgoPy.com 
-            </i>
-            
-            
-        </footer>
+    <div style="text-align: center; width: 60vw;   margin: 5cm;" class="stage">
+        <h1 style="position:fixed;margin-bottom:50vw; font-size: 3vw;">Hello, {{name}}</h1>
+    {% block footer %}
+    <footer style="position: fixed; top: 13cm; left: 14cm;">
+        <i>
+            Copyright &copy; All Rights Reserved by AlgoPy.com 
+        </i>
+    </footer>
+    {% endblock footer %}
   
     </div>
   

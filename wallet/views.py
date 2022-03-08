@@ -37,3 +37,6 @@ def divyansh(request):
             
 
     return render(request,"divyansh.html")
+
+def dashboard(request):
+    return render(request,"dashboard.html")

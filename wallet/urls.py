@@ -4,5 +4,5 @@ from wallet import views
 
 urlpatterns = [
     path("",views.index, name='index'),
-    path("divyansh/",views.divyansh,name="divyansh")
+    path("dashboard/",views.dashboard,name="dashboard")
 ]

@@ -1,50 +1,70 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="/static/CSS/style.css">
-    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="/static/CSS/mobile.css" />
-    <link rel="shortcut icon" href="/static/img/favicon.ico"type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>  {% block title %}{% endblock title %} </title>
+    <link rel="stylesheet" href="/static/CSS/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="only screen and (max-device-width: 480px)"
+      href="/static/CSS/mobile.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="/static/img/favicon.ico"
+      type="image/x-icon"
+    />
     <script src="/static/JS/script.js"></script>
-</head>
-<body>
-    
-<div style="width: 70vw; max-width: 80vw;"  id="container">
+  </head>
+  {% block container %}
+  <body>
 
-   <div class="nav">
-
-   </div>
-   <nav style="font-size: 1.5vw;">
-       <ul>
-            
-            
-        <br><br><br>
-            <li><a style="font-size: 2vw;" href="./dashboard.html">Profile</a></li>    <br>
-            <li><a href="send.html">Send Algo</a></li>    <br>
-            <li><a href="recieve.html">Recieve Algo</a></li>    <br>
-            <li><a href="history.html">Txns History</a></li>    <br>
-            <li><a href="./index.html">Logout</a></li>
-            
+    <div style="width: 70vw; max-width: 80vw" id="container">
+      <div class="nav"></div>
+      <nav style="font-size: 1.5vw">
+        <ul>
+          <br /><br /><br />
+          <li><a style="font-size: 2vw" href="./dashboard.html">Profile</a></li>
+          <br />
+          <li><a href="send.html">Send Algo</a></li>
+          <br />
+          <li><a href="recieve.html">Recieve Algo</a></li>
+          <br />
+          <li><a href="history.html">Txns History</a></li>
+          <br />
+          <li><a href="./index.html">Logout</a></li>
         </ul>
-    </nav>
+      </nav>
+      <!-- <img id="bgimg" src="/static/img/logo.png" alt=""> -->
+      <div style="text-align: center; width: 60vw; margin: 5cm" class="stage">
+        <h1 style="position: fixed; margin-bottom: 50vw; font-size: 3vw">
+          Hello, {{name}}
+        </h1>
 
-  
-    <!-- <img id="bgimg" src="/static/img/logo.png" alt=""> -->
-    <div style="text-align: center; width: 60vw;   margin: 5cm;" class="stage">
-        <h1 style="position:fixed;margin-bottom:50vw; font-size: 3vw;">Hello, {{name}}</h1>
-    {% block footer %}
-    <footer style="position: fixed; top: 1vw; left: 5vw;">
-        <i>
-            Copyright &copy; All Rights Reserved by AlgoPy.com 
-        </i>
-    </footer>
-    {% endblock footer %}
-  
+     
+
+      </div>
+
+      {% endblock container %}
+      
     </div>
-  
+  {% block content %}
+  {% lorem 1 b random %}
+  {% endblock content %}
+
+  {% block footer %}
+<div style="padding: 10px; text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:90vh; left: 0;height: 10vh; background-color:#20a764b8; color: white;">
+    Copyright &copy; All Rights Reserved by AlgoPy.com
+</div>
+  <!-- <footer style=" text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:50vh; left: 0;height: 50px; background-color:#20a764b8; color: white;">
+ 
+Copyright &copy; All Rights Reserved by AlgoPy.com
+  </footer> -->
+
+  {% endblock footer %}
 </body>
 </html>

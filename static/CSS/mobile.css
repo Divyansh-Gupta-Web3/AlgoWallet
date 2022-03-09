@@ -58,14 +58,6 @@ html {
     padding: 2rem;
     margin: 0 0 2rem 0;
   }
-  footer {
-    grid-column: 1 / 3;
-    /* background: #607D8B; */
-    /* padding: 5rem 1rem; */
-    position: relative;
-    text-align: center;
-  }
-
 
   h1{
       
@@ -200,13 +192,6 @@ top: 1cm;
 
 
 
-  footer{
-    position: fixed;
-    top: 20px;
-    width: 9cm;
-    top: 13cm;
-    left: 0cm;
-  }
 
   #bgimg{
     height: 5cm;  

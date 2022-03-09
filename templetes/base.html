@@ -18,17 +18,18 @@
       href="/static/img/favicon.ico"
       type="image/x-icon"
     />
-    <script src="/static/JS/script.js"></script>
-  </head>
-  {% block container %}
-  <body>
 
-    <div style="width: 70vw; max-width: 80vw" id="container">
-      <div class="nav"></div>
-      <nav style="font-size: 1.5vw">
-        <ul>
+  </head>
+  <body>
+      {% block container %}
+
+    <div style="width: 70vw; max-width: 80vw; position: fixed; top: 10vh; left: 15vw;" id="container">
+      <div class="nav">
+
+          <nav style="font-size: 1.5vw; width: 15vw; ">
+            <ul >
           <br /><br /><br />
-          <li><a style="font-size: 2vw" href="./dashboard.html">Profile</a></li>
+          <li><a style="font-size: 2vw; margin-top: 1vw;" href="./dashboard.html">Profile</a></li>
           <br />
           <li><a href="send.html">Send Algo</a></li>
           <br />
@@ -39,25 +40,29 @@
           <li><a href="./index.html">Logout</a></li>
         </ul>
       </nav>
+    </div>
       <!-- <img id="bgimg" src="/static/img/logo.png" alt=""> -->
-      <div style="text-align: center; width: 60vw; margin: 5cm" class="stage">
-        <h1 style="position: fixed; margin-bottom: 50vw; font-size: 3vw">
-          Hello, {{name}}
+      <div style="text-align: left; width: 60vw; height: 50vh;" class="stage">
+        <h1 style="position: fixed; right: 30vw; top: 0;  font-size: 3vw">
+          Hello, {{name}} <br> Here are your,
+        </h1>
+        <h1 style="position: fixed; right: 30vw; top: 20vh;  font-size: 2vw">
+            Account Balance : {{  }}
         </h1>
 
      
 
       </div>
 
-      {% endblock container %}
       
     </div>
+    {% endblock container %}
   {% block content %}
   {% lorem 1 b random %}
   {% endblock content %}
 
   {% block footer %}
-<div style="padding: 10px; text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:90vh; left: 0;height: 10vh; background-color:#20a764b8; color: white;">
+<div style="padding: 10px; text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:92vh; left: 0;height: 5vh; background-color:#20a764b8; color: white;">
     Copyright &copy; All Rights Reserved by AlgoPy.com
 </div>
   <!-- <footer style=" text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:50vh; left: 0;height: 50px; background-color:#20a764b8; color: white;">

@@ -66,5 +66,5 @@ def divyansh(request):
     return render(request,"divyansh.html")
 
 def dashboard(request): 
-    params={"name":"Divyansh"}
+    params={"name":"Divyansh","bal":"SJCNSDCJASIOCNAOSICNASIONCOASNC"}
     return render(request,"dashboard.html",params) 

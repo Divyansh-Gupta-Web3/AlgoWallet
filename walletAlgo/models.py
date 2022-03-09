@@ -6,5 +6,5 @@ from django.contrib.auth.models import AbstractUser
 
 class user(AbstractUser):
     passfrase=models.TextField(max_length=500)
-    Address=models.CharField(max_length=50)
-    privateKey=models.CharField(max_length=50)
+    Address=models.CharField(max_length=100)
+    privateKey=models.CharField(max_length=100)

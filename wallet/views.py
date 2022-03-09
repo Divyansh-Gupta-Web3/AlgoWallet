@@ -64,3 +64,7 @@ def divyansh(request):
             
 
     return render(request,"divyansh.html")
+
+def dashboard(request): 
+    params={"name":"Divyansh"}
+    return render(request,"dashboard.html",params) 

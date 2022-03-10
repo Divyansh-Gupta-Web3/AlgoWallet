@@ -64,6 +64,7 @@ def login(request):
     #         return redirect("divyansh")
             
     return render(request,"login.html")
+
 @login_required(login_url="/login/")
 def dashboard(request): 
     params={"name":"Divyansh"}
@@ -72,6 +73,7 @@ def dashboard(request):
 def recoverAcc(request):
     return render(request,"AddAccount.html")
 
+@login_required(login_url="/login/")
 def addacc(request):
     return render(request,"AddAccount2.html")
 

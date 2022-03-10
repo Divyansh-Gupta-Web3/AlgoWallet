@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>  {% block title %}{% endblock title %} </title>
+  <title>{% block title %}{% endblock title %} </title>
     <link rel="stylesheet" href="/static/CSS/style.css" />
     <link
       rel="stylesheet"
@@ -21,49 +21,47 @@
 
   </head>
   <body>
+
+
       {% block container %}
 
-    <div style="width: 70vw; max-width: 80vw; position: fixed; top: 10vh; left: 15vw;" id="container">
-      <div class="nav">
+{% block navbar %}
+<div style="width: 70vw; max-width: 80vw; position: fixed; top: 10vh; left: 15vw;" id="container">
+  <div class="nav">
+    
+    <nav style="{{ magic }} font-size: 1.5vw; width: 15vw; ">
+      <ul >
+        <br /><br /><br />
+        <li><a style="font-size: 2vw; margin-top: 1vw;" href="/dashboard">Profile </a></li>
+        <br />
+        <li><a href="/send">Send Algo</a></li>
+        <br />
+        <li><a href="/recieve">Recieve Algo</a></li>
+        <br />
+        <li><a href="/history">Txns History</a></li>
+        <br />
+        <li><a href="/">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+  {% endblock navbar %}
 
-          <nav style="font-size: 1.5vw; width: 15vw; ">
-            <ul >
-          <br /><br /><br />
-          <li><a style="font-size: 2vw; margin-top: 1vw;" href="/dashboard">Profile</a></li>
-          <br />
-          <li><a href="/send">Send Algo</a></li>
-          <br />
-          <li><a href="/recieve">Recieve Algo</a></li>
-          <br />
-          <li><a href="/history">Txns History</a></li>
-          <br />
-          <li><a href="/">Logout</a></li>
-        </ul>
-      </nav>
-    </div>
       <!-- <img id="bgimg" src="/static/img/logo.png" alt=""> -->
       <div style="text-align: left; width: 60vw; height: 50vh;" class="stage">
         <h1 style="position: fixed; right: 30vw; top: 0;  font-size: 3vw">
-          Hello, {{name}} <br> Here are your,
+          Hello, {{ name }} <br> Here are your,
         </h1>
         <h1 style="position: fixed; right: 30vw; top: 20vh;  font-size: 2vw">
             Account Balance : {{ bal }}
         </h1>
-
-     
-
       </div>
-
-      
     </div>
     {% endblock container %}
-  {% block content %}
-  {% lorem 1 b random %}
-  {% endblock content %}
+ 
 
   {% block footer %}
-<div style="padding: 10px; text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:92vh; left: 0;height: 5vh; background-color:#20a764b8; color: white;">
-    Copyright &copy; All Rights Reserved by AlgoPy.com
+<div style="padding: 10px; text-align: center; width: 100%; font-size: 1rem; position: fixed; bottom: 0; right: 0; top:92vh; left: 0;height: 5vh; background-color:#20a764b8; color: white;">
+    Copyright &copy; All Rights Reserved by AlgoPy.com 
 </div>
   <!-- <footer style=" text-align: center; width: 100%; font-size: 1.3vw; position: fixed; bottom: 0; right: 0; top:50vh; left: 0;height: 50px; background-color:#20a764b8; color: white;">
  

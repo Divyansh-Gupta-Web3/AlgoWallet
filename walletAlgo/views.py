@@ -47,7 +47,8 @@ def index(request):
     #     current = str(request.user)
     #     print(current)
 
-    return render(request,'index.html')    #,{'divyansh':kampy})
+    return render(request,'index.html',{'magic':'','name':'Divyansh','bal':'245'})  
+      #,{'divyansh':kampy})
 # Create your views here.
 def login(request):
     # if request.method == "POST":
@@ -67,8 +68,8 @@ def login(request):
 
 @login_required(login_url="/login/")
 def dashboard(request): 
-    params={"name":"Divyansh"}
-    return render(request,"dashboard.html",params) 
+   
+    return render(request,"dashboard.html") 
 
 def recoverAcc(request):
     return render(request,"AddAccount.html")
@@ -94,4 +95,4 @@ def newacc(request):
     return render(request,"NewAccount.html")
 
 def base(request):
-    return render(request,"base.html",{'item0':'0','item1':'profile','item2':'sendAlgo'})
+    return render(request,"base.html",{'magic':'','name':'name','bal':'245'})

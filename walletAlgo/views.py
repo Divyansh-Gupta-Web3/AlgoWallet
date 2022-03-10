@@ -32,38 +32,56 @@ def index(request):
     #   divyansh= {"sno":sno,"id":id,"cnfround":cnfround,"amount":amount,"receiver":receiver,"sender":sender ,"fee":fee,"tnxtype":tnxtype}
     #   kampy.append(divyansh)
     #   sno
-    user= get_user_model()
-    if request.method=="POST":
-        username = request.POST.get('username')
-        pas = request.POST.get('password')
-        passfrase = request.POST.get('passfrase')
-        address = request.POST.get('address')
-        privatekey = request.POST.get('username')
+    # user= get_user_model()
+    # if request.method=="POST":
+    #     username = request.POST.get('username')
+    #     pas = request.POST.get('password')
+    #     passfrase = request.POST.get('passfrase')
+    #     address = request.POST.get('address')
+    #     privatekey = request.POST.get('privatekey')
 
-        detail=user.objects.create_user(username=username,password=pas,passfrase=passfrase,Address=address,privateKey=privatekey)
-        detail.save()
+    #     detail=user.objects.create_user(username=username,password=pas,passfrase=passfrase,Address=address,privateKey=privatekey)
+    #     detail.save()
 
-        current = str(request.user)
-        print(current)
+    #     current = str(request.user)
+    #     print(current)
 
-    return render(request,'test.html')    #,{'divyansh':kampy})
+    return render(request,'index.html')    #,{'divyansh':kampy})
 # Create your views here.
-def divyansh(request):
-    if request.method == "POST":
-        name = request.POST.get('username')
-        pwd = request.POST.get('password')
+def login(request):
+    # if request.method == "POST":
+    #     name = request.POST.get('username')
+    #     pwd = request.POST.get('password')
             
-        user = authenticate(request, username=name,password=pwd)
-        if user is not None:
-            login(request,user)
-            current = str(request.user.username)
-            print(current)
-            return redirect("dashboard")
-        else:
-            return redirect("divyansh")
+    #     user = authenticate(request, username=name,password=pwd)
+    #     if user is not None:
+    #         login(request,user)
+    #         current = str(request.user.username)
+    #         print(current)
+    #         return redirect("dashboard")
+    #     else:
+    #         return redirect("divyansh")
             
-    return render(request,"divyansh.html")
+    return render(request,"login.html")
 
 def dashboard(request): 
     params={"name":"Divyansh"}
     return render(request,"dashboard.html",params) 
+
+def recoverAcc(request):
+    return render(request,"AddAccount.html")
+
+def addacc(request):
+    return render(request,"AddAccount2.html")
+
+def history(request):
+    return render(request,"history.html")
+
+def send(request):
+    return render(request,"send.html")
+
+def recieve(request):
+    return render(request,"recieve.html")
+
+def newacc(request):
+    return render(request,"NewAccount.html")

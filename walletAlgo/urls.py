@@ -12,6 +12,5 @@ urlpatterns = [
     path("recieve/",views.recieve,name="recieve"),
     path("newacc/",views.newacc,name="newacc"),
     path("history/",views.history,name="history"),
-
-
+    path("base/",views.base,name="base"),
 ]

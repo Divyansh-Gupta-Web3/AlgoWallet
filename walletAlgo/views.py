@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 import json
 from algosdk.v2client import indexer
 
@@ -63,7 +64,7 @@ def login(request):
     #         return redirect("divyansh")
             
     return render(request,"login.html")
-
+@login_required(login_url="/login/")
 def dashboard(request): 
     params={"name":"Divyansh"}
     return render(request,"dashboard.html",params) 
@@ -74,14 +75,21 @@ def recoverAcc(request):
 def addacc(request):
     return render(request,"AddAccount2.html")
 
+@login_required(login_url="/login/")
 def history(request):
     return render(request,"history.html")
 
+@login_required(login_url="/login/")
 def send(request):
     return render(request,"send.html")
 
+@login_required(login_url="/login/")
 def recieve(request):
     return render(request,"recieve.html")
 
+
 def newacc(request):
     return render(request,"NewAccount.html")
+
+def base(request):
+    return render(request,"base.html",{'item0':'0','item1':'profile','item2':'sendAlgo'})

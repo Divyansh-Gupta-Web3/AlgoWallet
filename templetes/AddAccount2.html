@@ -25,6 +25,8 @@
 <body>
 
     <div style="height: 85vh;" id="container">
+        <form action="" method="POST">
+            {% csrf_token %}
 
 
 
@@ -44,18 +46,16 @@
 
         <h1>In order to add an existing account to your wallet, you must enter your full pass-phrase below</h1>
         <img style="" id="bgimg" src="/static/img/logo.png" alt="">
-        <input class="addAcc" type="text" name="username" id="uname" placeholder="Account Name">
-        <input class="addAcc" type="password" name="username" id="pwd" placeholder="Account Password">
+        <input class="addAcc" type="text" name="username" id="username" placeholder="Account Name">
+        <input class="addAcc" type="password" name="password" id="password" placeholder="Account Password">
 
-        <a class="button" href="./dashboard.html">
-            <button style="height: 40px; top: 0; " class="btn">Create My Account</button>
+        <a class="button" href="/dashboard">
+            <button type="submit" style="height: 40px; top: 0; " class="btn">Create My Account</button>
         </a>
-        <a class="button" href="./index.html">
-       
-
+    </form>
+        <a class="button" href="/signin">
             <button style="height: 40px; top: 0; " class="btn">Back</button>
         </a>
-
     </div>
 
     <footer style="position: fixed; top: 15cm; left: 14cm;">

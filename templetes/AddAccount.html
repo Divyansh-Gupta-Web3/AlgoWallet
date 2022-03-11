@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,42 +39,43 @@
   
     <h1 >In order to add an existing account to your wallet, you must enter your full pass-phrase below</h1>
     <img style="" id="bgimg" src="/static/img/logo.png" alt="">
+    <form action="" method="POST">
+        {% csrf_token %}
     <div style="top: 4cm; height: 100vh; left: 4cm;" class="stage">
         <ol>
-            <li class="grp1"><input type="text" name="pass-phrase" class="pass" placeholder="Word 1"></li>
-            <li class="grp1"><input type="text" name="pass-phrase" class="pass" placeholder="Word 2"></li>
-            <li class="grp1"><input type="text" name="pass-phrase" class="pass" placeholder="Word 3"></li>
-            <li class="grp1"><input type="text" name="pass-phrase" class="pass" placeholder="Word 4"></li>
-            <li class="grp1"><input type="text" name="pass-phrase" class="pass" placeholder="Word 5"></li>
+            <li class="grp1"><input type="text" name="p1" id="p1" class="pass" placeholder="Word 1"></li>
+            <li class="grp1"><input type="text" name="p2" id="p2" class="pass" placeholder="Word 2"></li>
+            <li class="grp1"><input type="text" name="p3" id="p3" class="pass" placeholder="Word 3"></li>
+            <li class="grp1"><input type="text" name="p4" id="p4" class="pass" placeholder="Word 4"></li>
+            <li class="grp1"><input type="text" name="p5" id="p5" class="pass" placeholder="Word 5"></li>
            
-            <li class="grp2"><input type="text" name="pass-phrase" class="pass" placeholder="Word 6"></li>
-            <li class="grp2"><input type="text" name="pass-phrase" class="pass" placeholder="Word 7"></li>
-            <li class="grp2"><input type="text" name="pass-phrase" class="pass" placeholder="Word 8"></li>
-            <li class="grp2"><input type="text" name="pass-phrase" class="pass" placeholder="Word 9"></li>
-            <li class="grp2"><input type="text" name="pass-phrase" class="pass" placeholder="Word 10"></li>
+            <li class="grp2"><input type="text" name="p6" id="p6" class="pass" placeholder="Word 6"></li>
+            <li class="grp2"><input type="text" name="p7" id="p7" class="pass" placeholder="Word 7"></li>
+            <li class="grp2"><input type="text" name="p8" id="p8" class="pass" placeholder="Word 8"></li>
+            <li class="grp2"><input type="text" name="p9" id="p9" class="pass" placeholder="Word 9"></li>
+            <li class="grp2"><input type="text" name="p10" id="p10" class="pass" placeholder="Word 10"></li>
            
-            <li class="grp3"><input type="text" name="pass-phrase" class="pass" placeholder="Word 11"></li>
-            <li class="grp3"><input type="text" name="pass-phrase" class="pass" placeholder="Word 12"></li>
-            <li class="grp3"><input type="text" name="pass-phrase" class="pass" placeholder="Word 13"></li>
-            <li class="grp3"><input type="text" name="pass-phrase" class="pass" placeholder="Word 14"></li>
-            <li class="grp3"><input type="text" name="pass-phrase" class="pass" placeholder="Word 15"></li>
+            <li class="grp3"><input type="text" name="p11" id="p11" class="pass" placeholder="Word 11"></li>
+            <li class="grp3"><input type="text" name="p12" id="p12" class="pass" placeholder="Word 12"></li>
+            <li class="grp3"><input type="text" name="p13" id="p13" class="pass" placeholder="Word 13"></li>
+            <li class="grp3"><input type="text" name="p14" id="p14" class="pass" placeholder="Word 14"></li>
+            <li class="grp3"><input type="text" name="p15" id="p15" class="pass" placeholder="Word 15"></li>
             
-            <li class="grp4"><input type="text" name="pass-phrase" class="pass" placeholder="Word 16"></li>
-            <li class="grp4"><input type="text" name="pass-phrase" class="pass" placeholder="Word 17"></li>
-            <li class="grp4"><input type="text" name="pass-phrase" class="pass" placeholder="Word 18"></li>
-            <li class="grp4"><input type="text" name="pass-phrase" class="pass" placeholder="Word 19"></li>
-            <li class="grp4"><input type="text" name="pass-phrase" class="pass" placeholder="Word 20"></li>    
+            <li class="grp4"><input type="text" name="p16" id="p16" class="pass" placeholder="Word 16"></li>
+            <li class="grp4"><input type="text" name="p17" id="p17" class="pass" placeholder="Word 17"></li>
+            <li class="grp4"><input type="text" name="p18" id="p18" class="pass" placeholder="Word 18"></li>
+            <li class="grp4"><input type="text" name="p19" id="p19" class="pass" placeholder="Word 19"></li>
+            <li class="grp4"><input type="text" name="p20" id="p20" class="pass" placeholder="Word 20"></li>    
           
-            <li class="grp5"><input type="text" name="pass-phrase" class="pass" placeholder="Word 21"></li>
-            <li class="grp5"><input type="text" name="pass-phrase" class="pass" placeholder="Word 22"></li>
-            <li class="grp5"><input type="text" name="pass-phrase" class="pass" placeholder="Word 23"></li>
-            <li class="grp5"><input type="text" name="pass-phrase" class="pass" placeholder="Word 24"></li>
-            <li class="grp5"><input type="text" name="pass-phrase" class="pass" placeholder="Word 25"></li>
+            <li class="grp5"><input type="text" name="p21" id="21" class="pass" placeholder="Word 21"></li>
+            <li class="grp5"><input type="text" name="p22" id="22" class="pass" placeholder="Word 22"></li>
+            <li class="grp5"><input type="text" name="p23" id="23" class="pass" placeholder="Word 23"></li>
+            <li class="grp5"><input type="text" name="p24" id="24" class="pass" placeholder="Word 24"></li>
+            <li class="grp5"><input type="text" name="p25" id="25" class="pass" placeholder="Word 25"></li>
             
         </ol>
-        <a href="./AddAccount2.html">
-
-            <button  onclick="checkPhrase()" style="height: 40px;  top: -4cm; left: 30cm; " class="btn">Check</button>
+        <a href="{% url 'addacc' %}">
+            <button  type="submit" style="height: 40px;  top: -4cm; left: 30cm; "  class="btn">Check</button>
         </a>
         <!-- <input disabled type="text" name="username" id="uname" placeholder="Account Name">
         <input disabled type="password" name="username" id="pwd" placeholder="Account Password">
@@ -87,7 +89,7 @@
         </a>
      -->
     </div>
-      
+    </form>
         <footer style="position: fixed; top: 15cm;">
          <i>
                 Copyright &copy; All Rights Reserved by AlgoPy.com 

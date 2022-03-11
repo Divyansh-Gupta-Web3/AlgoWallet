@@ -112,7 +112,7 @@ box-shadow:  10px 4px 10px 4px #5EBF8E;
     text-align: center;
     height: 1cm;
     position:relative;
-    top: 4cm;
+    top: -6cm;
     left:14cm ;
     width: 6cm;
   }
@@ -284,7 +284,7 @@ ol li input{
 .button {
   position: relative;
   left: 14.5cm;
-  top: 4cm;
+  top: -6cm;
   display: grid;
   text-decoration: none;
   /* line-height: ; */

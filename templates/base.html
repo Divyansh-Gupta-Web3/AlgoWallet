@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AlgoPy</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="static/css/main.css" />
+    <style>
+      {% block style %}
+      {% endblock style %}
+      .nav-links{
+        color:black;
+        font-weight:bolder;
+      }
+      #logout:hover{
+        color:red;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    {% block navbar %}
+    <!-- Nav -->
+     
+    <nav class="navbar">
+      <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+                <i class="fa fa-bars"></i>
+              </label>
+       
+              <input type="checkbox" id="chkToggle"></input>
+              <ul class="main-nav" id="js-menu">
+                <li>
+            <a   href="/dashboard" class="nav-links">Profile</a>
+          </li>
+          <li>
+            <a href="/SendAlgo" class="nav-links">Send Algos</a>
+          </li>
+          <li>
+            <a href="/RecieveAlgo" class="nav-links">Recieve Algos</a>
+          </li>
+          <li>
+            <a href="/History" class="nav-links">History</a>
+          </li>
+          <li>
+            <a id="logout" href="/" class="nav-links">Logout</a>
+          </li>
+        </ul>
+      </nav>
+      
+      
+      {% endblock navbar %}
+      <div id="wrapper">
+      <div id="main">
+        <article id="home" class="panel intro">
+          <header>{% block main %} {% endblock main %}</header>
+        </article>
+      </div>
+      <!-- Footer -->
+      <div id="footer">Copyright &copy; All Rights Reserved by AlgoPy.com</div>
+    </div>
+    <!-- Scripts -->
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/browser.min.js"></script>
+    <script src="static/js/breakpoints.min.js"></script>
+    <script src="static/js/util.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
-{% block style %}
-#dashbord{
-    color:green;
-}
-{% endblock style %}
+{% block tab %}{% endblock tab %}
 {% block main %}
-<h1>
-   I AM DASHBOARD PAGE
+<style>
+  h1{
+    font-size:2rem; 
+    font-weight:400;
+  }
+  span{
+    font-weight:600; 
+    font-size:3rem;
+    color:green;
+    text-decoration:underline;
+  }
+</style>
+<br>
+<h1 style="font-size:2.5em; font-weight:800;">
+ Hey {{name}},
 </h1>
+<h1 >
+  Your Account Balance is <span > <br> {{bal}},</span> and
+</h1>
+<h1 >
+  Your Account Address is <span> {{add}}</span></h1>
+<br>
+<button class="btn">Copy Address to Clipboard</button>
 {% endblock main %}

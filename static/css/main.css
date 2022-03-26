@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
 @import url("fontawesome-all.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 
 /*
 	Astral by HTML5 UP
@@ -31,6 +33,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 ol, ul {
@@ -1326,7 +1329,7 @@ input, select, textarea {
 		}
 
 	body, input, textarea, select {
-		font-family: 'Source Sans Pro', sans-serif;
+		
 		font-weight: 300;
 		color: #777777;
 		font-size: 20pt;
@@ -1464,60 +1467,8 @@ input, select, textarea {
 
 /* Form */
 
-	/* form label {
-		display: block;
-		font-weight: 400;
-		color: #363636;
-		margin: 0 0 1em 0;
-	}
-
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"],
-	form select,
-	form textarea { */
-		/* -webkit-appearance: none;
-		border: 0;
-		background: #f4f4f4;
-		padding: 0.75em;
-		width: 100%;
-		-moz-transition: background-color .25s ease-in-out;
-		-webkit-transition: background-color .25s ease-in-out;
-		-ms-transition: background-color .25s ease-in-out;
-		transition: background-color .25s ease-in-out;
-	} */
-
-		/* form input[type="text"]:focus,
-		form input[type="email"]:focus,
-		form input[type="password"]:focus,
-		form select:focus,
-		form textarea:focus {
-			background: #f8f8f8;
-		}
-
-	form input[type="text"],
-	form input[type="email"],
-	form input[type="password"],
-	form select {
-		line-height: 1.35em;
-	}
-
-	form ::-webkit-input-placeholder {
-		color: #999;
-	}
-
-	form :-moz-placeholder {
-		color: #999;
-	}
-
-	form ::-moz-placeholder {
-		color: #999;
-	}
-
-	form :-ms-input-placeholder {
-		color: #999;
-	} */
-
+	
+	
 /* Section/Article */
 
 	section, article {
@@ -1748,7 +1699,7 @@ input, select, textarea {
 			text-rendering: auto;
 			line-height: 1;
 			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
+			/* font-family: 'Font Awesome 5 Free'; */
 			font-weight: 400;
 		}
 
@@ -1966,6 +1917,7 @@ input, select, textarea {
 		border-radius: 40px 5px;
 		background: #ffffff;
 		padding: 0;
+		font-weight: 800;
 		-moz-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
 		-webkit-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
 		-ms-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
@@ -2281,4 +2233,4 @@ input, select, textarea {
 		}
 	  }
 	  
-	
+	  

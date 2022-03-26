@@ -1,7 +1,30 @@
 {% extends 'base.html' %}
-
+{% block tab %}{% endblock tab %}
 {% block main %}
-<h1>
-   I AM NEW TXNs PAGE
+<style>
+  h1{
+    font-size:2rem; 
+    font-weight:400;
+  }
+  span{
+    font-weight:600; 
+    font-size:3rem;
+    color:green;
+    text-decoration:underline;
+  }
+  input{
+   color:black;
+   text-align: center;
+   border-radius: 30px;
+   border: 2px solid lightgreen;
+   margin:20px;
+   width:20vw;
+   }
+</style>
+<br>
+<h1 style="font-size:1.5em; font-weight:400;">
+ you can share your ALGOs with other from here.<br> Just provide us the the requierd details and we'll do it for you.
 </h1>
+<input type="text" name="Reciever" placeholder="Reciever's Account Address"></input><br>
+<button class="btn">Send ALGOs</button>
 {% endblock main %}

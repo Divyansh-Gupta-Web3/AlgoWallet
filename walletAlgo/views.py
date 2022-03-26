@@ -2,11 +2,13 @@ from pprint import pprint
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import json
 from algosdk.v2client import indexer
-from algosdk import mnemonic
+from algosdk import mnemonic, account
+from algosdk.v2client import algod
+
 
 passphrase=[]
 
@@ -153,7 +155,7 @@ def AddAccount(request):
         print(passphrase)
         print("your account recovered and your address is "+account_public_key + '\n'+ "and your private key is "+account_private_key)
         AddAccount.memo=passphrase
-        return redirect('createRecovery')
+        return redirect("createRecovery")
     return render(request,"AddAccount.html",holders)
 
 
@@ -221,26 +223,95 @@ def signin(request):
 #     return render(request, "AddAccount.html",holders)
 
 def CreateAccount(request):
+    if request.method == "POST":
+        user= get_user_model()
+        name=request.POST.get('AccName')
+        pwd=request.POST.get('AccPwd')
+        private_key, address = account.generate_account()
+        print(name)
+        add="{}".format(address)
+        private="{}".format(private_key)
+        pas = "{}".format(mnemonic.from_private_key(private_key))
+        detail=user.objects.create_user(username=name,password=pwd,passfrase=pas,Address=add,privateKey=private)
+        detail.save()
+        return redirect('signin')
     return render(request, "CreateAccount.html")
 
+@login_required(login_url="signin")
 def dashboard(request):
-    return render(request, "dashboard.html")
+    add=str(request.user.Address)
+    name=str(request.user.username)
+    algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv '
+    algod_address = 'https://testnet-algorand.api.purestake.io/ps2'
+    purestake_token = {'X-Api-key': algod_token}
+    algodclient = algod.AlgodClient(algod_token, algod_address, headers=purestake_token)
+    account_info = algodclient.account_info(add)
+    bal = "{} microAlgos".format(account_info.get('amount'))
+    print(bal)
+    print(name)
+    balance = {
+        "bal" : bal,
+        "add" : add,
+        "name":name
+    }
+    return render(request, "dashboard.html", balance)
 
-    
+@login_required(login_url="signin")    
 def SendAlgo(request):
     return render(request, "send.html")
+
+@login_required(login_url="signin")
 def RecieveAlgo(request):
-    return render(request, "recieve.html")
+    add=str(request.user.Address)
+    name=str(request.user.username)
+    algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv '
+    algod_address = 'https://testnet-algorand.api.purestake.io/ps2'
+    purestake_token = {'X-Api-key': algod_token}
+    algodclient = algod.AlgodClient(algod_token, algod_address, headers=purestake_token)
+    account_info = algodclient.account_info(add)
+    bal = "{} microAlgos".format(account_info.get('amount'))
+    print(bal)
+    print(name)
+    balance = {
+        "bal" : bal,
+        "add" : add,
+        "name":name
+    }
+    return render(request, "recieve.html",balance)
+
+@login_required(login_url="signin")
 def History(request):
-    return render(request, "history.html")
+    owner=str(request.user.Address)
+    algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv'
+    algod_address = 'https://testnet-algorand.api.purestake.io/idx2'
+    purestake_token = {'X-API-Key': algod_token}
+    acl = indexer.IndexerClient(algod_token, algod_address,headers=purestake_token)
+    response = acl.search_transactions(address=owner)
+    amt=(response["transactions"])
+    kampy=[]
+    sno=0
+    for amt in amt:
+        id=amt["id"]
+        cnfround=amt["confirmed-round"]
+        amount=amt["payment-transaction"]["amount"]
+        sender=amt["sender"]
+        receiver=amt["payment-transaction"]["receiver"]
+        fee=amt["fee"]
+        if sender==owner:
+            tnxtype="Sent"
+        else:
+            tnxtype="Receive"
+        sno=sno+1
+        divyansh= {"sno":sno,"id":id,"cnfround":cnfround,"amount":amount,"receiver":receiver,"sender":sender ,"fee":fee,"tnxtype":tnxtype}
+        kampy.append(divyansh)
+    return render(request,'history.html',{'divyansh':kampy})
+
 def createRecovery(request):
     if request.method=="POST":
         passphrase=AddAccount.memo
         mnemonic_phrase = passphrase
         account_private_key = mnemonic.to_private_key(mnemonic_phrase)
         account_public_key = mnemonic.to_public_key(mnemonic_phrase)
-        # print(account_private_key)
-        # print(account_public_key)
         user= get_user_model()
         username = request.POST.get('AccName')
         pwd = request.POST.get('AccPwd')
@@ -253,6 +324,11 @@ def createRecovery(request):
         return redirect('signin')
     return render(request, "createRecovery.html")
 
+def logoutpage(request):
+    if request.user.is_authenticated:
+        logout(request)
+        
+    return redirect('signin')
 
 
 

@@ -13,6 +13,12 @@
     text-decoration:underline;
   }
 </style>
+<script>
+  function hello(){
+
+    alert({{bal}});
+  }
+</script>
 <br>
 <h1 style="font-size:2.5em; font-weight:800;">
  Hey {{name}},
@@ -23,5 +29,5 @@
 <h1 >
   Your Account Address is <span> {{add}}</span></h1>
 <br>
-<button class="btn">Copy Address to Clipboard</button>
+<button onclick="hello()" class="btn">Copy Address to Clipboard</button>
 {% endblock main %}

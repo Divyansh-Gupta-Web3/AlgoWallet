@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block navbar %}{% endblock navbar %}
+{% block tab %}{% endblock tab %}
+
 {% block style %}
 input{
   color:black;
@@ -12,11 +14,11 @@ input{
 {% block main %}<br><br>
 
 <h2 style="line-height:1.2;">
-    Thanks for choosing your further digital currency journey with us,  Just add a  name and a powerful password for your acount and you are good to go:
-  </h2> <br>
+Great, your has been successfully recovered now you have to give us just 3 more things to get done:  </h2> <br>
   <form action="" method="post">
     {% csrf_token %}
       <input autocomplete="off" type="text" name="AccName" placeholder="Account Name"></input>
+      <input type="email" name="mail" placeholder="E-mail"></input><br>
       <input type="password" name="AccPwd" placeholder="Password"></input><br>
       <button type="submit" class="btn">Create Account</button>
     </form>

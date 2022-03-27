@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block navbar %}{% endblock navbar %}
+{% block tab %}{% endblock tab %}
 {% block style %}
 input{
   color:black;
@@ -15,8 +16,8 @@ input{
   </h2>
   <form action="" method="post">
     {% csrf_token %}
-    <input type="text" name="AccName" placeholder="Account Name"></input><br>
-    <input type="password" name="AccPwd" placeholder="Password"></input><br>
+    <input autocomplete="off"  type="text" name="AccName" placeholder="Account Name"></input><br>
+    <input autocomplete="off"  type="password" name="AccPwd" placeholder="Password"></input><br>
     <button type="submit" class="btn">Gain Access</button>
   </form>
 {% endblock main %}

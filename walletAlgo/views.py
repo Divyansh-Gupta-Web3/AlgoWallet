@@ -6,9 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import json
 from algosdk.v2client import indexer
-from algosdk import mnemonic, account
+from algosdk import mnemonic, account, transaction
 from algosdk.v2client import algod
-
+from django.core.mail import send_mail
 
 passphrase=[]
 
@@ -226,13 +226,14 @@ def CreateAccount(request):
     if request.method == "POST":
         user= get_user_model()
         name=request.POST.get('AccName')
+        email=request.POST.get('mail')
         pwd=request.POST.get('AccPwd')
         private_key, address = account.generate_account()
         print(name)
         add="{}".format(address)
         private="{}".format(private_key)
         pas = "{}".format(mnemonic.from_private_key(private_key))
-        detail=user.objects.create_user(username=name,password=pwd,passfrase=pas,Address=add,privateKey=private)
+        detail=user.objects.create_user(username=name,password=pwd,email=email,passfrase=pas,Address=add,privateKey=private)
         detail.save()
         return redirect('signin')
     return render(request, "CreateAccount.html")
@@ -247,8 +248,6 @@ def dashboard(request):
     algodclient = algod.AlgodClient(algod_token, algod_address, headers=purestake_token)
     account_info = algodclient.account_info(add)
     bal = "{} microAlgos".format(account_info.get('amount'))
-    print(bal)
-    print(name)
     balance = {
         "bal" : bal,
         "add" : add,
@@ -258,6 +257,47 @@ def dashboard(request):
 
 @login_required(login_url="signin")    
 def SendAlgo(request):
+    if request.method=="POST":
+        sendadd = request.POST.get('Reciever')
+        amt = int(request.POST.get('amount'))
+        passphrase = request.POST.get('Passphrase')
+        print(sendadd,amt,passphrase)
+        algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv '
+        algod_address = 'https://testnet-algorand.api.purestake.io/ps2'
+        purestake_token = {'X-Api-key': algod_token}
+
+        def wait_for_confirmation(client, txid):
+            last_round = client.status().get('last-round')
+            txinfo = client.pending_transaction_info(txid)
+            while not (txinfo.get('confirmed-round') and txinfo.get('confirmed-round') > 0):
+                print('Waiting for confirmation')
+                last_round += 1
+                client.status_after_block(last_round)
+                txinfo = client.pending_transaction_info(txid)
+            print('Transaction confirmed in round', txinfo.get('confirmed-round'))
+            return txinfo
+
+        mnemonic_phrase = passphrase
+        account_private_key = mnemonic.to_private_key(mnemonic_phrase)
+        account_public_key = mnemonic.to_public_key(mnemonic_phrase)
+        print("My address: {}".format(account_public_key))
+        algodclient = algod.AlgodClient(algod_token, algod_address, headers=purestake_token)
+        params = algodclient.suggested_params()
+        gh = params.gh
+        first_valid_round = params.first
+        last_valid_round = params.last
+        fee = params.min_fee
+        send_amount = amt
+        print(account_public_key)
+        existing_account = account_public_key
+        send_to_address = sendadd
+        tx = transaction.PaymentTxn(existing_account, fee, first_valid_round, last_valid_round, gh, send_to_address, send_amount, flat_fee=True)
+        signed_tx = tx.sign(account_private_key)
+        tx_confirm = algodclient.send_transaction(signed_tx)
+        print('Transaction sent with ID', signed_tx.transaction.get_txid())
+        wait_for_confirmation(algodclient, txid=signed_tx.transaction.get_txid())
+        account_info = algodclient.account_info(account_public_key)  
+        print("Final Account balance: {} microAlgos".format(account_info.get('amount')) + "\n")
     return render(request, "send.html")
 
 @login_required(login_url="signin")
@@ -314,10 +354,10 @@ def createRecovery(request):
         account_public_key = mnemonic.to_public_key(mnemonic_phrase)
         user= get_user_model()
         username = request.POST.get('AccName')
+        email = request.POST.get('mail')
         pwd = request.POST.get('AccPwd')
         print(username)
-        print(pwd)
-        detail=user.objects.create_user(username=username,password=pwd,passfrase=passphrase,Address=account_public_key,privateKey=account_private_key)
+        detail=user.objects.create_user(username=username,password=pwd,email=email,passfrase=passphrase,Address=account_public_key,privateKey=account_private_key)
         detail.save()
         current = str(request.user)
         print(current)
@@ -330,5 +370,30 @@ def logoutpage(request):
         
     return redirect('signin')
 
-
-
+def sendmail(request):
+    if request.method=="POST":
+        add=str(request.user.Address)
+        name=str(request.user.username)
+        private=str(request.user.privateKey)
+        pas=str(request.user.passfrase)
+        email=str(request.user.email)
+        algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv '
+        algod_address = 'https://testnet-algorand.api.purestake.io/ps2'
+        purestake_token = {'X-Api-key': algod_token}
+        algodclient = algod.AlgodClient(algod_token, algod_address, headers=purestake_token)
+        account_info = algodclient.account_info(add)
+        bal = "{} microAlgos".format(account_info.get('amount'))
+        balance = {
+            "bal" : bal,
+            "add" : add,
+            "name":name
+        }
+        subject="Algopy Account details of "+ name
+        data="Hello "+ name + " Your Account Address is : " + add + "\n"+"your Account private key is : "+ private +"\n"+"and your Passphrase is : " + pas + "\n" +"Thankyou for choosing Algopy \n Team Algopy."
+        send_mail(
+                subject,
+                data,
+                'pyAlgo.Wallet@gmail.com',
+                ['divyansh12398@gmail.com'],
+            )
+    return render(request, "dashboard.html",balance)

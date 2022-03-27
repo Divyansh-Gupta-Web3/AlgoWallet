@@ -18,7 +18,7 @@ Great, your has been successfully recovered now you have to give us just 3 more 
   <form action="" method="post">
     {% csrf_token %}
       <input autocomplete="off" type="text" name="AccName" placeholder="Account Name"></input>
-      <input type="email" name="mail" placeholder="E-mail"></input><br>
+      <input autocomplete="off"  type="email" name="mail" placeholder="E-mail"></input><br>
       <input type="password" name="AccPwd" placeholder="Password"></input><br>
       <button type="submit" class="btn">Create Account</button>
     </form>

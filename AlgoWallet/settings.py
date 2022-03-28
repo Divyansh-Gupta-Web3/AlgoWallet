@@ -88,17 +88,25 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER':'postgres',
-        'PASSWORD':'kampy123',
-        'HOST':'localhost',
-        'PORT':'5432'
+if DEBUG:
+    DATABASES={
+        'default':{
+            'ENGINE':'django.db.backends.sqlite3',
+            'NAME':os.path.join(BASE_DIR,'db.sqlite3'),
+        }
     }
-}
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'wallet',
+            'USER':'Algopy',
+            'PASSWORD':'wallet123',
+            'HOST':'localhost',
+            'PORT':'5432'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -146,4 +154,4 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

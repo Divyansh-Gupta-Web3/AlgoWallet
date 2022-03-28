@@ -14,16 +14,10 @@
   }
 </style>
 <br>
-
-<h1 >
-  Account Balance: <br>
-  <span > {{bal}}</span> 
-</h1>
 <h1 >
  Account Address: <span> {{add}}</span></h1>
 <br>
 <button class="btn">Copy Address to Clipboard</button>
 <br><br>
-<button class="btn">Show QR Code </button>
-
+{{ svg|safe }}
 {% endblock main %}

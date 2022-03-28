@@ -12,7 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os.path
+from django.contrib.messages import constants as messages
 
+MESSAGE_TAGS = {
+    messages.INFO: '',
+    50: 'critical',
+}
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -87,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER':'postgres',
-        'PASSWORD':'yash123',
+        'PASSWORD':'kampy123',
         'HOST':'localhost',
         'PORT':'5432'
     }

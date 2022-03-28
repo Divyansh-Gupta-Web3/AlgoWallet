@@ -9,6 +9,10 @@ from algosdk.v2client import indexer
 from algosdk import mnemonic, account, transaction
 from algosdk.v2client import algod
 from django.core.mail import send_mail
+from django.contrib import messages
+import qrcode
+import qrcode.image.svg
+from io import BytesIO
 
 passphrase=[]
 
@@ -110,7 +114,7 @@ def signin(request):
             login(request,user)
             current = str(request.user.username)
             print(current)
-
+            messages.success(request, 'Your password was updated successfully!')
             return redirect("dashboard")
         else:
             return redirect("signin")          
@@ -200,6 +204,7 @@ def SendAlgo(request):
 def RecieveAlgo(request):
     add=str(request.user.Address)
     name=str(request.user.username)
+
     algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv '
     algod_address = 'https://testnet-algorand.api.purestake.io/ps2'
     purestake_token = {'X-Api-key': algod_token}
@@ -213,7 +218,13 @@ def RecieveAlgo(request):
         "add" : add,
         "name":name
     }
-    return render(request, "recieve.html",balance)
+    context = {}
+    factory = qrcode.image.svg.SvgImage
+    img = qrcode.make((add,""), image_factory=factory, box_size=10)
+    stream = BytesIO()
+    img.save(stream)
+    context["svg"] = stream.getvalue().decode()
+    return render(request, "recieve.html",context=context)
 
 @login_required(login_url="signin")
 def History(request):

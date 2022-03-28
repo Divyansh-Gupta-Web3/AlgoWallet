@@ -35,7 +35,7 @@ SECRET_KEY = 'django-insecure-w_q^n(ro921fd46+!oh8o%xt&zqya!72jo)bae5lo@%#mj1v=o
 DEBUG = False
 
 ALLOWED_HOSTS = []
-
+  
 
 #Sending mail
 EMAIL_HOST = 'smtp.gmail.com'

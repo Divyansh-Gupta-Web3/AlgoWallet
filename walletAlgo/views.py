@@ -213,19 +213,16 @@ def RecieveAlgo(request):
     bal = "{} microAlgos".format(account_info.get('amount'))
     print(bal)
     print(name)
-    balance = {
-        "bal" : bal,
-        "add" : add,
-        "name":name
-    }
-    context = {}
+    context = {"address":add}
     factory = qrcode.image.svg.SvgImage
     img = qrcode.make((add,""), image_factory=factory, box_size=10)
     stream = BytesIO()
     img.save(stream)
+    
+    
     context["svg"] = stream.getvalue().decode()
+    
     return render(request, "recieve.html",context=context)
-
 @login_required(login_url="signin")
 def History(request):
     owner=str(request.user.Address)

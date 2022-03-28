@@ -295,7 +295,7 @@ def sendmail(request):
         send_mail(
                 subject,
                 data,
-                'pyAlgo.Wallet@gmail.com',
+                'AlgoPy.wallet@gmail.com',
                 [email],
             )
     return render(request, "dashboard.html",balance)

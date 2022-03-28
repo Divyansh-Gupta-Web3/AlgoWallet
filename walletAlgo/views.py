@@ -12,68 +12,6 @@ from django.core.mail import send_mail
 
 passphrase=[]
 
-# def index(request):
-
-#     # algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv'
-#     # algod_address = 'https://testnet-algorand.api.purestake.io/idx2'
-#     # purestake_token = {'X-API-Key': algod_token}
-#     # acl = indexer.IndexerClient(algod_token, algod_address,headers=purestake_token)
-#     # response = acl.search_transactions(address="JHIBASZEKIAANRRBNU4UTDJ2NLI4ZYRW6UHKHWTTMFUDK7CESTVYC3TEQI")
-#     # owner="JHIBASZEKIAANRRBNU4UTDJ2NLI4ZYRW6UHKHWTTMFUDK7CESTVYC3TEQI"
-#     # amt=(response["transactions"])
-#     # kampy=[]
-#     # sno=0
-#     # for amt in amt:
-#     #   id=amt["id"]
-#     #   cnfround=amt["confirmed-round"]
-#     #   amount=amt["payment-transaction"]["amount"]
-#     #   sender=amt["sender"]
-#     #   receiver=amt["payment-transaction"]["receiver"]
-#     #   fee=amt["fee"]
-#     #   if sender==owner:
-#     #       tnxtype="Sent"
-#     #   else:
-#     #       tnxtype="Receive"
-#     #   sno=sno+1
-#     #   divyansh= {"sno":sno,"id":id,"cnfround":cnfround,"amount":amount,"receiver":receiver,"sender":sender ,"fee":fee,"tnxtype":tnxtype}
-#     #   kampy.append(divyansh)
-#     #   sno
-#     # user= get_user_model()
-#     # if request.method=="POST":
-#     #     username = request.POST.get('username')
-#     #     pas = request.POST.get('password')
-#     #     passfrase = request.POST.get('passfrase')
-#     #     address = request.POST.get('address')
-#     #     privatekey = request.POST.get('privatekey')
-
-#     #     detail=user.objects.create_user(username=username,password=pas,passfrase=passfrase,Address=address,privateKey=privatekey)
-#     #     detail.save()
-
-#     #     current = str(request.user)
-#     #     print(current)
-
-#     return render(request,'index.html',{'magic':'','name':'Divyansh','bal':'245'})  
-#       #,{'divyansh':kampy})
-# # Create your views here.
-# def signin(request):
-#     if request.method == "POST":
-#         name = request.POST.get('username')
-#         pwd = request.POST.get('password')          
-#         user = authenticate(request, username=name,password=pwd)
-#         if user is not None:
-#             login(request,user)
-#             current = str(request.user.username)
-#             print(current)
-#             return redirect("dashboard")
-#         else:
-#             return redirect("login")          
-#     return render(request,"login.html")
-
-# @login_required(login_url="/signin/")
-# def dashboard(request): 
-   
-#     return render(request,"dashboard.html") 
-
 def AddAccount(request):
     holders={
         "Words1":
@@ -159,44 +97,6 @@ def AddAccount(request):
     return render(request,"AddAccount.html",holders)
 
 
-# def addacc(request):
-    #  if request.method=="POST":
-    #     passphrase=AddAccount.memo
-    #     mnemonic_phrase = passphrase
-    #     account_private_key = mnemonic.to_private_key(mnemonic_phrase)
-    #     account_public_key = mnemonic.to_public_key(mnemonic_phrase)
-    #     # print(account_private_key)
-    #     # print(account_public_key)
-    #     user= get_user_model()
-    #     username = request.POST.get('AccName')
-    #     pwd = request.POST.get('AccPwd')
-    #     detail=user.objects.create_user(username=username,password=pwd,passfrase=passphrase,Address=account_public_key,privateKey=account_private_key)
-    #     detail.save()
-    #     current = str(request.user)
-    #     print(current)
-    #     return redirect('login')
-    # return render(request,"AddAccount2.html")
-
-# @login_required(login_url="/login/")
-# def history(request):
-#     return render(request,"history.html")
-
-# @login_required(login_url="/login/")
-# def send(request):
-#     return render(request,"send.html")
-
-# @login_required(login_url="/login/")
-# def recieve(request):
-#     return render(request,"recieve.html")
-
-
-# def newacc(request):
-#     return render(request,"NewAccount.html")
-
-# def base(request):
-#     return render(request,"base.html",{'magic':'','name':'name','bal':'245'})
-
-
 
 def index(request):
     return render(request, 'index.html')
@@ -215,12 +115,6 @@ def signin(request):
         else:
             return redirect("signin")          
     return render(request,"login.html")
-
- 
-# def (request):
-    
-
-#     return render(request, "AddAccount.html",holders)
 
 def CreateAccount(request):
     if request.method == "POST":
@@ -265,7 +159,8 @@ def SendAlgo(request):
         algod_token = '4xcfeVtFO21zGa5oJr3us3bpzXACJjQg5oPUdTtv '
         algod_address = 'https://testnet-algorand.api.purestake.io/ps2'
         purestake_token = {'X-Api-key': algod_token}
-
+  
+        #waiting for confirmation
         def wait_for_confirmation(client, txid):
             last_round = client.status().get('last-round')
             txinfo = client.pending_transaction_info(txid)
@@ -277,6 +172,7 @@ def SendAlgo(request):
             print('Transaction confirmed in round', txinfo.get('confirmed-round'))
             return txinfo
 
+        #Sending Algo from one account to another
         mnemonic_phrase = passphrase
         account_private_key = mnemonic.to_private_key(mnemonic_phrase)
         account_public_key = mnemonic.to_public_key(mnemonic_phrase)
@@ -389,11 +285,11 @@ def sendmail(request):
             "name":name
         }
         subject="Algopy Account details of "+ name
-        data="Hello "+ name + " Your Account Address is : " + add + "\n"+"your Account private key is : "+ private +"\n"+"and your Passphrase is : " + pas + "\n" +"Thankyou for choosing Algopy \n Team Algopy."
+        data="Hello " + name + "\n"+"Your Account Address is : " + add + "\n"+"your Account private key is : "+ private +"\n"+"and your Passphrase is : " + pas + "\n" +"Thankyou for choosing Algopy \n Team Algopy."
         send_mail(
                 subject,
                 data,
                 'pyAlgo.Wallet@gmail.com',
-                ['divyansh12398@gmail.com'],
+                [email],
             )
     return render(request, "dashboard.html",balance)

@@ -1445,6 +1445,8 @@ input, select, textarea {
 
 	table {
 		width: 100%;
+		
+
 	}
 
 		table.default tbody tr {
@@ -1453,6 +1455,8 @@ input, select, textarea {
 
 		table.default td {
 			padding: 0.5em 1em 0.5em 1em;
+			color: black;
+
 		}
 
 		table.default th {

@@ -34,8 +34,8 @@ SECRET_KEY = 'django-insecure-w_q^n(ro921fd46+!oh8o%xt&zqya!72jo)bae5lo@%#mj1v=o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
-  
+ALLOWED_HOSTS = ['wallet-algopy.herokuapp.com','127.0.0.1']
+
 
 #Sending mail
 EMAIL_HOST = 'smtp.gmail.com'
@@ -147,7 +147,7 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Activate Django-Heroku.

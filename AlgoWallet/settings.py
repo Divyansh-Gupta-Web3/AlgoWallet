@@ -14,6 +14,7 @@ import os
 
 from pathlib import Path
 import os.path
+from pickle import TRUE
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
@@ -89,12 +90,12 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 if DEBUG:
-    DATABASES={
-        'default':{
-            'ENGINE':'django.db.backends.sqlite3',
-            'NAME':os.path.join(BASE_DIR,'db.sqlite3'),
-        }
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
     }
+}
 else:
 
     DATABASES = {
@@ -104,7 +105,7 @@ else:
             'USER':'Algopy',
             'PASSWORD':'wallet123',
             'HOST':'localhost',
-            'PORT':'5432'
+            'PORT':''
         }
     }
 

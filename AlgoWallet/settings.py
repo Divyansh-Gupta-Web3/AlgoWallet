@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'walletAlgo.apps.WalletalgoConfig'
+    'walletAlgo.apps.WalletalgoConfig',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -105,10 +106,10 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd80s7dnjsmkip5',
-        'USER':'okawqmyvulrped',
-        'PASSWORD':'2dba07dbf1e408f32e71b06816dfedb3cdacfda3a44a17476e2c158e269bc484',
-        'HOST':'ec2-52-21-136-176.compute-1.amazonaws.com',
+        'NAME': 'd3u6qjhv5f34tf',
+        'USER':'szxqezhwliddwj',
+        'PASSWORD':'74bba9d3b3ea5d807b9f473d749a42986242378bc369b6d5cb791d290a45d9e5',
+        'HOST':'ec2-52-3-60-53.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }
@@ -130,6 +131,14 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+ASGI_APPLICATION="algopy-wallet.routing.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {"hosts": [os.environ.get("REDIS_URL", "redis://localhost:6379")]},
+    },
+}
 
 
 # Internationalization

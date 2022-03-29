@@ -23,7 +23,7 @@ MESSAGE_TAGS = {
 }
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -91,14 +91,24 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'divyansh',
+#         'USER':'gupta',
+#         'PASSWORD':'wallet123',
+#         'HOST':'localhost',
+#         'PORT':''
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'divyansh',
-        'USER':'gupta',
-        'PASSWORD':'wallet123',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER':'postgres',
+        'PASSWORD':'kampy123',
         'HOST':'localhost',
-        'PORT':''
+        'PORT':'5432'
     }
 }
 
@@ -150,9 +160,9 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-if DEBUG:
-    STATICFILES_DIRS = [
+
+STATICFILES_DIRS = [
             os.path.join(BASE_DIR, 'static')
     ]
-else:
-    STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')

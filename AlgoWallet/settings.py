@@ -94,8 +94,8 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'wallet',
-        'USER':'Algopy',
+        'NAME': 'divyansh',
+        'USER':'gupta',
         'PASSWORD':'wallet123',
         'HOST':'localhost',
         'PORT':''

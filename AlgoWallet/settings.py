@@ -105,10 +105,10 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dd3usf01sdg3em',
-        'USER':'zidkcwhufjjksi',
-        'PASSWORD':'82519158ef4d7c615fa29777b4bef004d5cf8f4eb4882416bad790725058a8f1',
-        'HOST':'ec2-54-160-109-68.compute-1.amazonaws.com',
+        'NAME': 'd80s7dnjsmkip5',
+        'USER':'okawqmyvulrped',
+        'PASSWORD':'2dba07dbf1e408f32e71b06816dfedb3cdacfda3a44a17476e2c158e269bc484',
+        'HOST':'ec2-52-21-136-176.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }

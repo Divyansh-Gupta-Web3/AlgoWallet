@@ -215,7 +215,7 @@ def RecieveAlgo(request):
     print(name)
     context = {"address":add}
     factory = qrcode.image.svg.SvgImage
-    img = qrcode.make((add), image_factory=factory, box_size=10)
+    img = qrcode.make((add), image_factory=factory, box_size=20)
     stream = BytesIO()
     img.save(stream)
     context["svg"] = stream.getvalue().decode()

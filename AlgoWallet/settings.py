@@ -160,7 +160,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 if DEBUG:
     STATICFILES_DIRS = [
-            os.path.join(PROJECT_DIR, 'static')
+            os.path.join(BASE_DIR, 'static')
     ]
 else:
     STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')

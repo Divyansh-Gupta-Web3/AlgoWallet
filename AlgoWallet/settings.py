@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-w_q^n(ro921fd46+!oh8o%xt&zqya!72jo)bae5lo@%#mj1v=o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['wallet-algopy.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['algo-py-wallet.herokuapp.com','127.0.0.1']
 
 
 #Sending mail
@@ -90,13 +90,25 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER':'postgres',
+#         'PASSWORD':'kampy123',
+#         'HOST':'localhost',
+#         'PORT':'5432'
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER':'postgres',
-        'PASSWORD':'kampy123',
-        'HOST':'localhost',
+        'NAME': 'dd3usf01sdg3em',
+        'USER':'zidkcwhufjjksi',
+        'PASSWORD':'    82519158ef4d7c615fa29777b4bef004d5cf8f4eb4882416bad790725058a8f1',
+        'HOST':'ec2-54-160-109-68.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }
@@ -139,7 +151,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 # Default primary key field type
@@ -148,7 +159,7 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
+STATIC_URL = 'static/'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+

@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
+import django_heroku
+
 
 from pathlib import Path
 import os.path
@@ -29,15 +32,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w_q^n(ro921fd46+!oh8o%xt&zqya!72jo)bae5lo@%#mj1v=o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wallet-algopy.herokuapp.com','127.0.0.1']
 
 
 #Sending mail
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'pyAlgo.Wallet@gmail.com'
-EMAIL_HOST_PASSWORD = 'MCNSolution'
+EMAIL_HOST_USER = 'AlgoPy.wallet@gmail.com'
+EMAIL_HOST_PASSWORD = 'MCNSolutions'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
@@ -143,3 +146,9 @@ STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

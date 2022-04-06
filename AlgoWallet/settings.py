@@ -91,26 +91,26 @@ WSGI_APPLICATION = 'AlgoWallet.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'divyansh',
-        'USER':'gupta',
-        'PASSWORD':'wallet123',
-        'HOST':'localhost',
-        'PORT':''
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER':'postgres',
-#         'PASSWORD':'kampy123',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'divyansh',
+#         'USER':'gupta',
+#         'PASSWORD':'wallet123',
 #         'HOST':'localhost',
-#         'PORT':'5432'
+#         'PORT':''
 #     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER':'postgres',
+        'PASSWORD':'kampy123',
+        'HOST':'localhost',
+        'PORT':'5432'
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
